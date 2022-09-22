@@ -47,29 +47,48 @@ public class Game
      */
     private void createRooms()
     {
-        Room anemona, arraia, dori, lab, office, quitRoom;
+        Room anemona, arraia, dori, quitRoom, tubaroes, canion, tartarugas, aguasVivas, baleia, sidney, nemo, campoMinado;
       
         // create the rooms
         anemona = new Room("Anemona","Você está no começo do jogo");
         arraia = new Room("Arraia","Você está na arraia");
         quitRoom = new Room("Saida","Você está saindo do jogo");
         dori = new Room("Dori","Você encontrou a Dori");
-        //lab = new Room("in a computing lab");
-        //office = new Room("in the computing admin office");
+        tubaroes = new Room("Tubaroes","Você encontrou tubarôes, fuja!");
+        canion = new Room("Canion","Você chegou aos canions");
+        campoMinado = new Room("CampoMinado", "Você foi papocado por minas, burrão...");
+        tartarugas = new Room("Tartarugas","Você encontrou as tartarugas");
+        aguasVivas = new Room("AguasVivas","Você chegou até as aguas vivas, tenha cuidado");
+        baleia = new Room("Baleia","Você foi engolido por uma baleia e não tem escolha, siga o caminho que ela te levar");
+        sidney = new Room("Sidney","Você chegou em Sidney");
+        nemo = new Room("Nemo","Nemo deve está por perto...");
         
         // initialise room exits
         anemona.setExit("north", arraia);
         anemona.setExit("south", quitRoom);
-        anemona.setExit("west", dori);
 
-        arraia.setExit("west", anemona);
+        arraia.setExit("north", tubaroes);
+        arraia.setExit("west", dori);
+        arraia.setExit("south", anemona);
 
-        dori.setExit("east", anemona);
+        dori.setExit("east", arraia);
+        dori.setExit("north", tubaroes);
 
-        //lab.setExit("north", anemona);
-        //lab.setExit("east", office);
+        tubaroes.setExit("south", arraia);
+        tubaroes.setExit("north", canion);
+        tubaroes.setExit("east", campoMinado);
 
-        //office.setExit("west", lab);
+        canion.setExit("north", aguasVivas);
+        canion.setExit("west", tartarugas);
+        canion.setExit("east", sidney);
+
+        tartarugas.setExit("north", baleia);
+        tartarugas.setExit("south", canion);
+        tartarugas.setExit("east", aguasVivas);
+
+        baleia.setExit("east", sidney);
+
+        sidney.setExit("east", nemo);
 
         currentRoom = anemona;  // start game anemona
     }
