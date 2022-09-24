@@ -1,4 +1,4 @@
 # DoriGame
  
 ### Game Map
-![image](https://user-images.githubusercontent.com/58920070/192116266-0d443b5c-22a2-4ac2-8da4-784fd2efc991.png)
+![Mapa](https://user-images.githubusercontent.com/72520858/192118001-75c1c71f-f606-4657-a4ef-dce759216f55.png)
