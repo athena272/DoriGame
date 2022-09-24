@@ -44,6 +44,9 @@ public class Game
     {
         createRooms();
         parser = new Parser();
+        hasDori = false;
+        hasBaleia = false;
+        hasTartarugas = false;
     }
 
     /**
@@ -86,6 +89,8 @@ public class Game
         canion.setExit("west", tartarugas);
         canion.setExit("east", sidney);
 
+        aguasVivas.setExit("west", tartarugas);
+
         tartarugas.setExit("north", baleia);
         tartarugas.setExit("south", canion);
         tartarugas.setExit("east", aguasVivas);
@@ -113,20 +118,26 @@ public class Game
 
             if(currentRoom.getName().equals("Dori")){
                 hasDori = true;
-            }else if (currentRoom.getName().equals("Tubarao")){
+            }else if (currentRoom.getName().equals("Tubaroes")){
                 if(hasDori){
                     continue;
                 }else{
                     isDead = true;
                     System.out.println("Voce ta sem a dori burrão...");
                 }
-            }else if(currentRoom.getName().equals("Tartaruga")){
+            } else if(currentRoom.getName().equals("CampoMinado")) {
+                isDead = true;
+            } else if(currentRoom.getName().equals("Tartarugas")){
                 hasTartarugas = true;
             }else if(currentRoom.getName().equals("Baleia")){
                 hasBaleia = true;
             }else if(currentRoom.getName().equals("Nemo")){
                 if(hasDori && hasTartarugas && hasBaleia){
                     isFinished = true;
+                }
+                else {
+                    System.out.println("Você chegou em Sidney muito cedo...");
+                    break;
                 }
             }
 
