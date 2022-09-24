@@ -1,16 +1,18 @@
 package com.teste;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
 
-    @org.junit.jupiter.api.BeforeEach
+    @Before
     void setUp() {
     }
 
-    @org.junit.jupiter.api.AfterEach
+    @After
     void tearDown() {
     }
 
