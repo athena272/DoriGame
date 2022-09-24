@@ -29,6 +29,10 @@ public class Game
     private Parser parser;
     private Room currentRoom;
 
+    private Boolean hasDori;
+    private Boolean hasTartarugas;
+    private Boolean hasBaleia;
+
     private Boolean isDead;
 
     private Boolean isFinished;
@@ -107,8 +111,33 @@ public class Game
             isDead = isFinished =  processCommand(command);
             isFinished = currentRoom.getName().equals("Saida") ? true : false;
 
+            if(currentRoom.getName().equals("Dori")){
+                hasDori = true;
+            }else if (currentRoom.getName().equals("Tubarao")){
+                if(hasDori){
+                    continue;
+                }else{
+                    isDead = true;
+                    System.out.println("Voce ta sem a dori burrão...");
+                }
+            }else if(currentRoom.getName().equals("Tartaruga")){
+                hasTartarugas = true;
+            }else if(currentRoom.getName().equals("Baleia")){
+                hasBaleia = true;
+            }else if(currentRoom.getName().equals("Nemo")){
+                if(hasDori && hasTartarugas && hasBaleia){
+                    isFinished = true;
+                }
+            }
+
         } while (!isDead && !isFinished);
-        System.out.println("Thank you for playing.  Good bye.");
+        if(isDead){
+            System.out.println("Wasted!");
+        }
+        if(isFinished){
+            System.out.println("Thank you for playing.  Good bye.");
+        }
+        
 
     }
 
